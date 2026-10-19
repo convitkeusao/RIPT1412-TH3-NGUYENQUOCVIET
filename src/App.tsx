@@ -9,8 +9,10 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import RootNavigator from './navigation/RootNavigator';
+import Root from './navigation/Root';
 import { runMigrations } from './database/migrations';
+import { DataProvider } from './shared/lib/DataContext';
+import { colors } from './shared/constants/colors';
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);
@@ -57,14 +59,16 @@ export default function App() {
         </View>
       ) : !isReady ? (
         <View style={styles.center}>
-          <ActivityIndicator size="large" color="#75856A" />
+          <ActivityIndicator size="large" color={colors.primary} />
           <Text style={styles.loadingText}>
-            Đang chuẩn bị không gian của bạn...
+            Đang chuẩn bị dữ liệu học tập...
           </Text>
         </View>
       ) : (
         <NavigationContainer>
-          <RootNavigator />
+          <DataProvider>
+            <Root />
+          </DataProvider>
         </NavigationContainer>
       )}
     </SafeAreaProvider>
@@ -77,21 +81,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
-    backgroundColor: '#FBF5EA',
+    backgroundColor: colors.background,
   },
   loadingText: {
     marginTop: 14,
-    color: '#81766B',
+    color: colors.muted,
   },
   errorTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#51483F',
+    color: colors.ink,
     textAlign: 'center',
   },
   errorText: {
     marginTop: 12,
-    color: '#B42318',
+    color: colors.red,
     textAlign: 'center',
   },
 });

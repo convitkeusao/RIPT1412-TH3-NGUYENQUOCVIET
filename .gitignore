@@ -1,6 +1,8 @@
 # OSX
 #
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Xcode
 #
@@ -14,6 +16,7 @@ build/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+*.xcscmblueprint
 *.xccheckout
 *.moved-aside
 DerivedData
@@ -33,13 +36,29 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+*.jks
 .kotlin/
+captures/
+
+# Signing credentials
+*.p12
+*.mobileprovision
+*.provisionprofile
+*.cer
 
 # node.js
 #
 node_modules/
 npm-debug.log
+yarn-debug.log*
 yarn-error.log
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.sample
 
 # fastlane
 #
@@ -62,9 +81,18 @@ yarn-error.log
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+.metro-cache/
+.watchman-cookie-*
 
 # testing
 /coverage
+
+# Local editor and OS files
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+Thumbs.db
 
 # Yarn
 .yarn/*
